@@ -6,7 +6,7 @@ services:
   - docker
 
 env:
-  #- BUILD=ubuntu
+  - BUILD=ubuntu
   - BUILD=centos
 
 script:
