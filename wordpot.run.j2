@@ -44,7 +44,7 @@ setup_wordpot_conf () {
     local secret=${4:-}
     local wp_port=${5:-8080}
 
-    pushd /opt/wordpot
+    pushd {{ wordpot_dir }}
     cp wordpot.conf wordpot.conf.bak
 
     perl -i -ne 'print unless /HPFEEDS_.*/' wordpot.conf
@@ -117,7 +117,7 @@ main () {
                        ${feeds_server_port} \
                        ${uid} ${secret} \
                        ${wp_port}
-    exec su - wordpot -c "/opt/wordpot/wordpot-env/bin/python /opt/wordpot/wordpot.py"
+    exec su - wordpot -c "{{ wordpot_dir }}/wordpot-env/bin/python {{ wordpot_dir }}/wordpot.py"
 }
 
 main "$@"
