@@ -1,0 +1,16 @@
+version: '2'
+services:
+  ubuntu:
+    build:
+      context: .
+      dockerfile: Dockerfile-ubuntu
+    image: wordpot:ubuntu
+    volumes:
+      - ./wordpot.sysconfig:/etc/default/wordpot:z
+  centos:
+    build:
+      context: .
+      dockerfile: Dockerfile-centos
+    image: wordpot:centos
+    volumes:
+      - ./wordpot.sysconfig:/etc/sysconfig/wordpot:z
